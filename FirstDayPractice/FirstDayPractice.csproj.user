@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Calculator.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CalculatorPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ControlsPracticeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Day3\Day3Window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Day3\UserControls\BindingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Day3\UserControls\ResourcesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Day3\UserControls\TemplateView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Day3\UserControls\TriggerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Day4\MasterNewVisionDesign.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Day6+\Day6Window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="NewPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="NewPopupWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ReportPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Calculator.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CalculatorPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ControlsPracticeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Day3\Day3Window.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Day3\UserControls\ResourceDictionaryPractice.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Day3\UserControls\BindingView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Day3\UserControls\ResourcesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Day3\UserControls\TemplateView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Day3\UserControls\TriggerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Day4\MasterNewVisionDesign.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Day6+\Color.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Day6+\Day6Window.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="NewPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="NewPopupWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ReportPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,343 @@
+﻿<Window x:Class="FirstDayPractice.ControlsPracticeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FirstDayPractice"
+        mc:Ignorable="d"
+        Title="ControlsPracticeWindow" Height="450" Width="800"
+        WindowStyle="None"
+        AllowsTransparency="False"
+        Loaded="Window_Loaded" Margin="0">
+    
+    <Border BorderBrush="Gray" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Background="SteelBlue" Grid.Row="0" Margin="0" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5" >
+                    <Image Source="pack://application:,,,/Day4/Images/home.png" Width="20" Height="20" Margin="0,0,10,0"/>
+                    <TextBlock Text="VISION"
+                               VerticalAlignment="Center"
+                               Foreground="White"
+                               FontSize="14"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5">
+                    <Button Content="🗕" Width="30" Click="Minimize_Click" Margin="2"/>
+                    <Button Content="🗖" Width="30" Click="Maximize_Click" Margin="2"/>
+                    <Button Content="✖" Width="30" Click="Close_Click" Margin="2"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <TabControl x:Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
+                    <TabItem Header="Tab 1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="200"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TreeView Grid.Column="0"  Margin="4" Padding="5">
+                                <TreeViewItem Header="Parent1" IsExpanded="True" IsSelected="True">
+                                    <TreeViewItem Header="Child 1"/>
+                                    <TreeViewItem Header="Child 2"/>
+                                </TreeViewItem>
+                                <TreeViewItem Header="Parent2">
+                                    <TreeViewItem Header="Child 1"/>
+                                    <TreeViewItem Header="Child 2"/>
+                                </TreeViewItem>
+                            </TreeView>
+
+                            <Calendar Grid.Column="0" Grid.Row="1"/>
+
+                            <GridSplitter Grid.Column="1"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Width="3"
+                              Background="black"
+                              ShowsPreview="True"/>
+
+
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="150"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="2" Grid.Row="0" Padding="10" Style="{StaticResource labelBold}" Content="List of Person"></Label>
+                                <ListView Grid.Column="2" Grid.Row="1" Margin="5" HorizontalAlignment="Left" MaxWidth="400" MinWidth="300" ItemsSource="{Binding Persons}" SelectedIndex="0" Background="WhiteSmoke" Padding="10">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Name}"></TextBlock>
+                                                <TextBlock Text="{Binding Department}"></TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                                <ToolBarTray Margin="5" Height="30"  VerticalAlignment="Top" HorizontalAlignment="Right">
+                                    <ToolBar Name="MyToolbar" Width="130" Height="30" >
+                                        <Button Background="LightSkyBlue" Content="Open" Name="OpenButton" Click="OpenButton_Click" />
+                                        <Button Background="LightSkyBlue" Content="Close" Name="CloseButton" Click="CloseButton_Click" />
+                                        <Button Background="LightSkyBlue" Content="Exit" Name="ExitButton" Click="ExitButton_Click" />
+                                        <TextBlock FontFamily="pack://application:,,,/Fonts/#Segoe Fluent Icons" Text="&#xE700;" FontSize="20"/>
+                                        <TextBlock FontSize="16">
+                                        <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/" 
+                                           RequestNavigate="Hyperlink_RequestNavigate"
+                                           ToolTip="Open WPF docs">
+                                            Link
+                                         </Hyperlink>
+                                        </TextBlock>
+                                        <Button Background="LightSkyBlue" Content="Extra1" Name="ExtraButton1" Click="ExtraButton1_Click" />
+                                        <Button Background="LightSkyBlue" Content="Extra2" Name="ExtraButton2" Click="ExtraButton2_Click" />
+                                    </ToolBar>
+                                </ToolBarTray>
+                            </Grid>
+
+
+
+
+                            <StackPanel Grid.Row="1" Grid.Column="2" Margin="5" Orientation="Vertical" Background="FloralWhite" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Style="{StaticResource labelBold}">Select Age:</Label>
+                                    <TextBlock Text="{Binding ElementName=mySlider, Path=Value, StringFormat= {}{0:F0}}" Margin="0 5 0 0"/>
+                                    <Slider x:Name="mySlider" Width="100" Margin="5" Minimum="0" Maximum="10" TickFrequency="2"/>
+                                    <Label Style="{StaticResource labelBold}">Gender:</Label>
+                                    <StackPanel Orientation="Horizontal" Margin="10">
+                                        <RadioButton Content="M" GroupName="genderGroup" IsChecked="True" Margin="0 0 10 0"/>
+                                        <RadioButton Content="F" GroupName="genderGroup"/>
+                                    </StackPanel>
+                                    <Label Style="{StaticResource labelBold}">Department:</Label>
+                                    <ComboBox Height="30" MinWidth="200" Margin="3" VerticalAlignment="top" SelectedIndex="0">
+                                        <ComboBoxItem Content="Technical"/>
+                                        <ComboBoxItem Content="Sales"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="10">
+                                    <Label FontWeight="bold">DOB:</Label>
+                                    <DatePicker/>
+
+                                </StackPanel>
+                                <Label FontWeight="bold">Style given text(select and right click):</Label>
+                                <TextBox Name="textBox1"
+                                TextWrapping="Wrap" Height="40"
+                                Margin="10, 10, 5, 5" Grid.Row="1">
+                                    Ameer.
+                                    <TextBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="_Bold"
+                                           IsCheckable="True"
+                                           Checked="Bold_Checked"
+                                           Unchecked="Bold_Unchecked" />
+                                            <MenuItem Header="_Italic"
+                                           IsCheckable="True"
+                                           Checked="Italic_Checked"
+                                           Unchecked="Italic_Unchecked" />
+                                            <Separator />
+                                            <MenuItem Header="I_ncrease Font Size" Click="IncreaseFont_Click" />
+                                            <MenuItem Header="_Decrease Font Size" Click="DecreaseFont_Click" />
+                                        </ContextMenu>
+                                    </TextBox.ContextMenu>
+                                </TextBox>
+
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Tab 2">
+                        <Grid Margin="5">
+                            <Grid x:Name="Tab2LoadingPanel">
+                                <StackPanel x:Name="Tab2Loading" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="Loading..." Margin="5" FontSize="16" FontWeight="Bold"></TextBlock>
+                                    <ProgressBar IsIndeterminate="True" Height="20" Width="150"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid x:Name="Tab2MainContentGrid" Margin="5" Visibility="Collapsed">
+                                <DockPanel x:Name="Tab2DockPanel">
+
+                                    <!-- Actual content (hidden initially) -->
+                                    <Menu DockPanel.Dock="Top" x:Name="Tab2Menu">
+                                        <MenuItem Header="File">
+                                            <MenuItem 
+                                            Header="Open" 
+                                            Click="OpenFileMenuItem_Click"
+                                            ToolTipService.InitialShowDelay="30"
+                                            ToolTipService.Placement="MousePoint"
+                                            ToolTipService.ToolTip="Opens calculator"
+                                          />
+                                            <MenuItem 
+                                            Header="Save"
+                                            Click="SaveFileMenuItem_Click"
+                                            ToolTipService.InitialShowDelay="30"
+                                            ToolTipService.Placement="MousePoint"
+                                            ToolTipService.ToolTip="Opens calculator"
+                                          />
+                                            <MenuItem 
+                                            Header="Print"
+                                            Click="PrintMenuItem_Click"
+                                            ToolTipService.InitialShowDelay="30"
+                                            ToolTipService.Placement="MousePoint"
+                                            ToolTipService.ToolTip="Opens calculator"
+                                          />
+                                            <Separator/>
+                                            <MenuItem Header="Exit"/>
+                                        </MenuItem>
+                                        <MenuItem Header="More">
+                                            <MenuItem Header="About Project"/>
+                                            <MenuItem Header="About Developer"/>
+
+                                        </MenuItem>
+                                    </Menu>
+                                    <!--footer-->
+                                    <StackPanel DockPanel.Dock="Bottom" Margin="0 5 0 5"  VerticalAlignment="Bottom">
+                                        <Label HorizontalAlignment="Center" FontSize="12" Content="© 2025 Ameer." />
+                                    </StackPanel>
+
+                                    <!--FAQ section-->
+                                    <StackPanel DockPanel.Dock="Bottom" Margin="0 10 0 10" Background="AntiqueWhite" VerticalAlignment="Bottom">
+                                        <Label Style="{StaticResource labelBold}">Frequently Asked Questions</Label>
+                                        <Expander Header="What does WPF stand for?" Content="Ans: WPF stands for Windows Presentation Foundation "  IsExpanded="True" Margin="5" Padding="5" Background="FloralWhite"/>
+                                        <Expander Header="What is WPF used for?" Content="Ans: It is a powerful framework for building Windows applications."  IsExpanded="False" Margin="5" Padding="5" Background="FloralWhite"/>
+                                    </StackPanel>
+
+                                    <!--datagrid part-->
+                                    <DataGrid x:Name="Tab2DataGrid" ItemsSource="{Binding Persons}"
+                                      Margin="0 10 0 10" >
+
+                                    </DataGrid>
+
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Tab 3">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="10" Orientation="Vertical" >
+
+                                <!-- DocumentViewer (for XPS) -->
+                                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,10">DocumentViewer (XPS Viewer)</TextBlock>
+                                <DocumentViewer Name="docViewer" Height="200" Margin="0,5"/>
+
+                                <!-- FlowDocumentPageViewer -->
+                                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,10">FlowDocumentPageViewer (Page by Page)</TextBlock>
+                                <FlowDocumentPageViewer Height="150" Margin="0,5">
+                                    <FlowDocument>
+                                        <Paragraph>This is a FlowDocumentPageViewer example showing one page at a time.</Paragraph>
+                                    </FlowDocument>
+                                </FlowDocumentPageViewer>
+
+                                <!-- FlowDocumentReader -->
+                                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,10">FlowDocumentReader (Multiple View Modes)</TextBlock>
+                                <FlowDocumentReader Height="150" Margin="0,5">
+                                    <FlowDocument>
+                                        <Paragraph>This FlowDocumentReader lets users switch between page, scroll, and two-page views.</Paragraph>
+                                    </FlowDocument>
+
+                                </FlowDocumentReader>
+
+                                <!-- FlowDocumentScrollViewer -->
+                                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,10">FlowDocumentScrollViewer (Vertical Scroll)</TextBlock>
+                                <FlowDocumentScrollViewer Height="150" Margin="0,5">
+                                    <FlowDocument>
+                                        <Paragraph>This FlowDocumentScrollViewer shows the document as a continuous vertical scroll.</Paragraph>
+                                    </FlowDocument>
+                                </FlowDocumentScrollViewer>
+
+                                <!-- StickyNoteControl placeholder -->
+                                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,10">StickyNoteControl</TextBlock>
+                                <Border Height="100" Background="#FFEEE8AA" Margin="0,5" Padding="5">
+                                    <TextBlock Text="StickyNoteControl is a specialized control that requires custom setup. Placeholder here." TextWrapping="Wrap"/>
+                                </Border>
+
+                                <!-- RichTextBox -->
+                                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,10">RichTextBox (Editable Rich Text)</TextBlock>
+                                <RichTextBox Height="150" Margin="0,5">
+                                    <FlowDocument>
+                                        <Paragraph>Edit this text. You can format it (bold, italic, colors).</Paragraph>
+                                    </FlowDocument>
+                                </RichTextBox>
+
+
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="Tab 4">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="200"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="10" VerticalAlignment="Top">
+
+                                <!-- Image -->
+                                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,0,0,5">Image:</TextBlock>
+                                <Image Width="200" Height="150" 
+                           Source="https://eternitech.com/wp-content/uploads/2023/01/WPF-logo.png"
+                           Margin="0,0,0,15"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top">
+                                <!-- MediaElement -->
+                                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,10,0,5">MediaElement (Video)</TextBlock>
+                                <!--<WebBrowser x:Name="youtubeBrowser" Width="640" Height="360"/>-->
+
+                                <!-- Media Element -->
+                                <MediaElement x:Name="mediaPlayer"
+                                  Width="300"
+                                  Height="170"
+                                  LoadedBehavior="Manual"
+                                  UnloadedBehavior="Stop"
+                                  MediaFailed="mediaPlayer_MediaFailed"
+                                  Source="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" />
+
+                                <!-- Fallback Text -->
+                                <TextBlock x:Name="fallbackText"
+                               Text="No video to show."
+                               FontSize="16"
+                               Foreground="Red"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Visibility="Collapsed"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" VerticalAlignment="Top">
+
+                                <!-- SoundPlayerAction -->
+                                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,10,0,5">SoundPlayerAction (Play sound on button click)</TextBlock>
+
+                                <Button Content="Play Sound" Width="120" Height="35" HorizontalAlignment="Left" >
+                                    <Button.Triggers>
+                                        <EventTrigger RoutedEvent="Button.Click">
+                                            <SoundPlayerAction Source="https://www.soundjay.com/buttons/sounds/button-3.mp3" />
+                                        </EventTrigger>
+                                    </Button.Triggers>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                </TabControl>   
+            </Grid>
+            </Grid>
+    </Border>
+</Window>

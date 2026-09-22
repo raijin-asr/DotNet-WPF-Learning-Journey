@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Day4\Images\backward.png" />
+    <None Remove="Day4\Images\check.png" />
+    <None Remove="Day4\Images\close.png" />
+    <None Remove="Day4\Images\delete.jpg" />
+    <None Remove="Day4\Images\home.png" />
+    <None Remove="Day4\Images\image-icon.png" />
+    <None Remove="Day4\Images\new-icon.png" />
+    <None Remove="Day4\Images\plus.png" />
+    <None Remove="Day4\Images\previous.png" />
+    <None Remove="Day4\Images\remove.png" />
+    <None Remove="Day4\Images\upload.png" />
+    <None Remove="Day4\Images\view.png" />
+    <None Remove="watermark.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Day4\Images\backward.png" />
+    <Resource Include="Day4\Images\forward.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Day4\Images\home.png" />
+    <Resource Include="Day4\Images\next.png" />
+    <Resource Include="Day4\Images\check.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Day4\Images\close.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Day4\Images\delete.jpg" />
+    <Resource Include="Day4\Images\image-icon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Day4\Images\new-icon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Day4\Images\plus.png" />
+    <Resource Include="Day4\Images\previous.png" />
+    <Resource Include="Day4\Images\remove.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Day4\Images\upload.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Day4\Images\view.png" />
+    <Resource Include="watermark.png" />
+  </ItemGroup>
+
+</Project>

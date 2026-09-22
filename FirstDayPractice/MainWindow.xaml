@@ -1,0 +1,80 @@
+﻿<Window x:Class="FirstDayPractice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FirstDayPractice"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Background="{StaticResource BackgroundColor}"
+>
+    <Window.Resources>
+        <ControlTemplate x:Key="btnTemplate" TargetType="Button">
+            <Grid>
+                <Ellipse x:Name = "ButtonEllipse" Height = "100" Width = "100" >
+                    <Ellipse.Fill>
+                        <LinearGradientBrush StartPoint = "0,0.2" EndPoint = "0.2,1.4">
+                            <GradientStop Offset = "0" Color = "Red" />
+                            <GradientStop Offset = "1" Color = "Orange" />
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <ContentPresenter Content = "{TemplateBinding Content}" 
+        HorizontalAlignment = "Center" VerticalAlignment = "Center" />
+            </Grid>
+
+            <ControlTemplate.Triggers>
+
+                <Trigger Property = "IsMouseOver" Value = "True">
+                    <Setter TargetName = "ButtonEllipse" Property = "Fill" >
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint = "0,0.2" EndPoint = "0.2,1.4">
+                                <GradientStop Offset = "0" Color = "YellowGreen" />
+                                <GradientStop Offset = "1" Color = "Red" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="0,10" >
+                <Button Content="Open Calculator in Frame" Click="GoToCalculator_Click" Margin="5" Background="red" Foreground="white"/>
+                <Button Content="Open Report" Template="{StaticResource roundButton}" Width="100" Height="40" Click="GoToNewWindow_Click" Margin="5" Background="green" Foreground="white"/>
+                <Button Content="Open Calculator in new window" Click="GoToCalculatorWindow_Click" Margin="5"  Background="black" Foreground="white"/>
+            </StackPanel>
+            <Border BorderBrush="black" BorderThickness="0,0,1,0" Margin="10,5"/>
+
+            
+            <Frame x:Name="MainFrame" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal"  Height="150" Margin="0,10">
+            <Button Content="All Controls practice" Click="GoToControlWindow_Click" Margin="5"  Height="30" Background="yellow" Foreground="black"/>
+            <Button Content="Day 3" Click="GoToDay3Window_Click" Margin="10" Background="CornflowerBlue" Height="30" Foreground="black"/>
+            <Button Content="Day 4" Click="GoToDay4Window_Click" Template="{StaticResource btnTemplate}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Margin="0,10">
+            <Button Content="Day 6 practice" Click="GoToDay6Window_Click" Margin="5"  Height="30" Background="orange" Foreground="white"/>
+            <!--<Button Content="Day 4" Click="GoToDay4Window_Click" Template="{StaticResource btnTemplate}"/>-->
+        </StackPanel>
+    </Grid>
+</Window>
